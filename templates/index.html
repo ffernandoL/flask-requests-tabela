@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }}</title>
+    <link rel="stylesheet" href="https:w3schools.com/w3css/4/w3.css">
+    <style>
+        * { margin: 0; padding: 0; }
+        body {
+            display: flex;
+            min-height: 100vh;
+            justify-content:center; 
+            align-items: center;
+        }
+        .add-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <a class='add-btn' href="/add">
+        <button>Adicionar Produto</button>
+    </a>    
+    <table class='w3-table-all'> 
+        <tr>
+            <td>Nome</td>
+            <td>Preço</td>
+        </tr>
+          
+    {% for nome, preco in produtos %}        
+            <tr>
+                <td>
+                    <a href='/prod/{{loop.index0}}'>
+                        {{ nome }}
+                    </a>
+                </td>                
+            {% if preco > 5 %}
+                <td class='w3-red'>R$ {{ preco }}</td>
+            {% else %}
+                <td>R$ {{ preco }}</td>
+            {% endif %}            
+            </tr>
+    {% endfor %}
+       
+    </table>
+</body>
+</html>
