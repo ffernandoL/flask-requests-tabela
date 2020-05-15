@@ -22,7 +22,8 @@ def produto(id):
     prod = produtos[id]
     return render_template(
         'produtos.html',
-        produto=prod
+        produto=prod,
+        id=id
     )
 
 @app.route('/add')
@@ -35,6 +36,11 @@ def store():
     preco = float(request.form['preco'])
     produtos.append([nome, preco])
     
+    return redirect('/')
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    del produtos[id]
     return redirect('/')
 
 if __name__ == '__main__':
